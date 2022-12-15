@@ -1,4 +1,5 @@
-# 注意！！腾讯开始有动作了，见https://bbs.deepin.org/post/247302，本仓库无限期暂停更新
+# 注意！！腾讯开始有动作了，见https://bbs.deepin.org/post/247302
+# 本仓库无限期暂停更新
 
 <img src="assets/icon.png" alt="logo" height="120" align="right" />
 
