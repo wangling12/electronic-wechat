@@ -1,5 +1,6 @@
-# 注意！！腾讯开始有动作了，见https://bbs.deepin.org/post/247302
-# 本仓库无限期暂停更新
+> 本仓库消极更新，但仍接受PR
+>
+> 使用可能会出现账号被警告甚至被封，请自行斟酌使用，原因见 https://bbs.deepin.org/post/247302
 
 <img src="assets/icon.png" alt="logo" height="120" align="right" />
 
@@ -19,7 +20,7 @@
 
 [https://aur.archlinux.org/packages/electronic-wechat-uos-bin](https://aur.archlinux.org/packages/electronic-wechat-uos-bin) 感谢[@Kimiblock](https://github.com/Kimiblock)
 
-## 星火用户
+## 星火用户（已下架）
 
 <a href="https://spk.yzzi.icu/?spk=spk://store/chat/electronic-wechat" target="_blank">
 <img alt="Get it on Spark Store" src="https://download.gankun.cn.ma/api/raw/?path=/%E5%85%B6%E4%BB%96/getitonSparkStore.png" width="165" height="64" />
