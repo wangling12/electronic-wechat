@@ -18,9 +18,12 @@
     <div class="top-bar-middle">
       <ul class="title-list">
         <li>
-          <h1>Electronic Wechat V2.3.1</h1></li>
+          <h1>Electronic Wechat V2.3.1</h1>
+        </li>
         <li>
-          <h1 style="font-size:95%;">Powered by Electron V<span id="top-title-electron-ver">process.versions.electron</span></h1></li>
+          <h1 style="font-size:95%;">Powered by Electron V<span
+              id="top-title-electron-ver">process.versions.electron</span></h1>
+        </li>
       </ul>
     </div>
   </div>
@@ -83,8 +86,8 @@
         </li>
         <li class="menu-button">
           <select class="" id="app-frame-select" onchange="changefun('frame')">
-            <option value="on">On</option>
-            <option value="off">Off</option>
+            <option value="on">Show</option>
+            <option value="off">Hide</option>
           </select>
         </li>
       </ul>
@@ -148,7 +151,7 @@
           <h4 id="app-instance-desc">多个实例可以同时登录不同帐号</h4>
         </li>
         <li class="menu-button">
-          <select id="app-instance-select"  onchange="changefun('instance')">
+          <select id="app-instance-select" onchange="changefun('instance')">
             <option value="on">On</option>
             <option value="off">Off</option>
           </select>
@@ -193,7 +196,7 @@
           <h4 id="app-blur-desc">在失去焦点的时候是否进入挂起状态</h4>
         </li>
         <li class="menu-button">
-          <select id="app-blur-select"  onchange="changefun('blur')">
+          <select id="app-blur-select" onchange="changefun('blur')">
             <option value="on">On</option>
             <option value="off">Off</option>
           </select>
@@ -209,7 +212,7 @@
           <h4 id="app-select-notification-body-desc">选择通知显示的信息</h4>
         </li>
         <li class="menu-button">
-          <select id="app-select-notification-body-select"  onchange="changefun('select-notification-body')">
+          <select id="app-select-notification-body-select" onchange="changefun('select-notification-body')">
             <option value="on">On</option>
             <option value="off">Off</option>
           </select>
@@ -217,16 +220,24 @@
         <li class="menu-button" id="app-select-notification-body-select-ex">
           选择要显示的内容
           <div class="checkbox">
-            <input type="checkbox" id="app-select-notification-body-select-ex-head" name="head" value="head" onchange="changefun('select-notification-body-ex')" /><label for="app-select-notification-body-select-ex-head">头像</label>
+            <input type="checkbox" id="app-select-notification-body-select-ex-head" name="head" value="head"
+              onchange="changefun('select-notification-body-ex')" /><label
+              for="app-select-notification-body-select-ex-head">头像</label>
           </div>
           <div class="checkbox">
-            <input type="checkbox" id="app-select-notification-body-select-ex-name" name="name" value="name" onchange="changefun('select-notification-body-ex')" /><label for="app-select-notification-body-select-ex-name">名称</label>
+            <input type="checkbox" id="app-select-notification-body-select-ex-name" name="name" value="name"
+              onchange="changefun('select-notification-body-ex')" /><label
+              for="app-select-notification-body-select-ex-name">名称</label>
           </div>
           <div class="checkbox">
-            <input type="checkbox" id="app-select-notification-body-select-ex-teamName" name="teamName" value="teamName" onchange="changefun('select-notification-body-ex')" /><label for="app-select-notification-body-select-ex-teamName">群名称</label>
+            <input type="checkbox" id="app-select-notification-body-select-ex-teamName" name="teamName" value="teamName"
+              onchange="changefun('select-notification-body-ex')" /><label
+              for="app-select-notification-body-select-ex-teamName">群名称</label>
           </div>
           <div class="checkbox">
-            <input type="checkbox" id="app-select-notification-body-select-ex-body" name="body" value="body" onchange="changefun('select-notification-body-ex')" /><label for="app-select-notification-body-select-ex-body">内容</label>
+            <input type="checkbox" id="app-select-notification-body-select-ex-body" name="body" value="body"
+              onchange="changefun('select-notification-body-ex')" /><label
+              for="app-select-notification-body-select-ex-body">内容</label>
           </div>
         </li>
       </ul>
@@ -334,7 +345,7 @@
     const selectNotificationBodyCheckBoxs = $('app-select-notification-body-select-ex')
     const historySelect = $('app-history-select');
 
-    if(process.platform === 'darwin') {
+    if (process.platform === 'darwin') {
       $('process.platform').style.display = 'none';
     }
 
@@ -367,8 +378,8 @@
     //   })
     // }
 
-    function changefun(name){
-      switch(name){
+    function changefun(name) {
+      switch (name) {
         case 'language':
           AppConfig.saveSettings('language', lanSelect.value)
           break
@@ -396,11 +407,11 @@
           break
         case 'proxy':
           AppConfig.saveSettings('proxy', proxySelect.value)
-          if(proxySelect.value=='setProxy'){
-            $('app-proxy-input').style.display='block'
+          if (proxySelect.value == 'setProxy') {
+            $('app-proxy-input').style.display = 'block'
           }
-          else{
-            $('app-proxy-input').style.display='none'
+          else {
+            $('app-proxy-input').style.display = 'none'
           }
           break
         case 'blur':
@@ -414,12 +425,12 @@
           break
         case 'css':
           AppConfig.saveSettings('css', CSSSelect.value)
-          if(CSSSelect.value=='on'){
-            $('app-css-input').style.display='block'
+          if (CSSSelect.value == 'on') {
+            $('app-css-input').style.display = 'block'
             ipcRenderer.send('refreshCss', $('app-css-input').value)
           }
-          else{
-            $('app-css-input').style.display='none'
+          else {
+            $('app-css-input').style.display = 'none'
             ipcRenderer.send('refreshCss', '')
           }
           break
@@ -442,10 +453,10 @@
       $('app-update-select').value = update;
       $('app-proxy-select').value = proxy;
       $('app-proxy-input').value = proxyURl;
-      $('app-proxy-input').style.display = (proxy==='setProxy')?'block':'none'
+      $('app-proxy-input').style.display = (proxy === 'setProxy') ? 'block' : 'none'
       $('app-css-select').value = css;
-      $('app-css-input').value = cssContent?cssContent:'';
-      $('app-css-input').style.display = (css==='on')?'block':'none'
+      $('app-css-input').value = cssContent ? cssContent : '';
+      $('app-css-input').style.display = (css === 'on') ? 'block' : 'none'
       $('app-blur-select').value = blur;
       $('app-select-notification-body-select').value = selectNotificationBody;
       $('app-select-notification-body-select-ex-head').checked = selectNotificationBodyEx.includes('head')
@@ -453,7 +464,7 @@
       $('app-select-notification-body-select-ex-teamName').checked = selectNotificationBodyEx.includes('teamName')
       $('app-select-notification-body-select-ex-body').checked = selectNotificationBodyEx.includes('body')
       $('app-history-select').value = history;
-      $('app-history-exinput').style.display = (history==='on')?'block':'none'
+      $('app-history-exinput').style.display = (history === 'on') ? 'block' : 'none'
     }
 
     function setLocale() {
@@ -491,26 +502,26 @@
       $('app-history-desc').innerHTML = Common.historyDesc;
     }
 
-    function setProxy(){
-      debounce(()=>{
+    function setProxy() {
+      debounce(() => {
         AppConfig.saveSettings('proxy-url', $('app-proxy-input').value)
-      },500)
+      }, 500)
     }
 
-    function setCss(){
-      debounce(()=>{
+    function setCss() {
+      debounce(() => {
         AppConfig.saveSettings('css-content', $('app-css-input').value)
-        if(CSSSelect.value === 'on'){
+        if (CSSSelect.value === 'on') {
           ipcRenderer.send('refreshCss', $('app-css-input').value)
         }
-      },100)
+      }, 100)
     }
 
-    function getNotificationInfo(){
+    function getNotificationInfo() {
       let inputs = selectNotificationBodyCheckBoxs.getElementsByTagName('input')
       let result = []
-      for(let item of inputs){
-        if(item.checked){
+      for (let item of inputs) {
+        if (item.checked) {
           result.push(item.name)
         }
       }
@@ -529,17 +540,17 @@
       if (evt.keyCode == 73 && evt.ctrlKey && evt.shiftKey) evt.preventDefault();
     }
 
-    function ClearAllHistory(){
-      if(confirm(Common.clearHistoryConfirm)){
+    function ClearAllHistory() {
+      if (confirm(Common.clearHistoryConfirm)) {
         ipcRenderer.send('clearHistory')
       }
     }
 
-    function debounce(func){//防抖
+    function debounce(func) {//防抖
       clearTimeout(this.timer)
-      this.timer = setTimeout(()=>{
+      this.timer = setTimeout(() => {
         func()
-      },300)
+      }, 300)
     }
 
   </script>
