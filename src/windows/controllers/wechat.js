@@ -74,6 +74,10 @@ class WeChatWindow {
       icon: path.join(__dirname, '../../../assets/icon.png'),
       titleBarStyle: 'hidden-inset',
       webPreferences: {
+        nodeIntegration: true,
+        enableRemoteModule: true,
+        contextIsolation: false,
+        sandbox: false,
         javascript: true,
         plugins: true,
         nodeIntegration: false,
@@ -81,6 +85,9 @@ class WeChatWindow {
         preload: path.join(__dirname, '../../inject/preload.js'),
       },
     });
+    this.wechatWindow.webContents.openDevTools({ mode: 'right' })
+    const remoteMain = require("@electron/remote/main");
+    remoteMain.enable(this.wechatWindow.webContents);
     /* menu is always visible on xfce session */
     isXfce().then(data => {
       if(data) {

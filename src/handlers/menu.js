@@ -1,15 +1,17 @@
 'use strict';
 
-const { remote, shell, ipcRenderer } = require('electron');
+const { shell, ipcRenderer } = require('electron');
+const { Menu, process } = require('@electron/remote')
+
 const AppConfig = require('../configuration');
 
-const { Menu, app } = remote;
+// const { app } = remote;
 
 const Common = require('../common');;
 
 class MenuHandler {
   create() {
-    const template = this.getTemplate(remote.process.platform);
+    const template = this.getTemplate(process.platform);
     if (template) {
       const menuFromTemplate = Menu.buildFromTemplate(template);
       Menu.setApplicationMenu(menuFromTemplate);
@@ -238,13 +240,16 @@ class MenuHandler {
           },
           {
             type: 'separator',
-          }, {
+          },
+          {
             label: Common.MENU.feedback,
             click: MenuHandler._githubIssues,
-          }, {
+          },
+          {
             label: Common.MENU.feedback_forker,
             click: MenuHandler._forkerGithubIssues,
-          }, {
+          },
+          {
             label: Common.MENU.checkRelease,
             click: MenuHandler._update,
           }],
