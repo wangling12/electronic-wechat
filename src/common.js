@@ -5,10 +5,10 @@ const AppConfig = require('./configuration');
 const lan = AppConfig.readSettings('language');
 
 let Common;
-if (lan === 'zh-CN') {
-  Common = require('./common_cn');
-} else {
+if (lan === 'en_US') {
   Common = require('./common_en');
+} else {
+  Common = require('./common_cn');
 }
 
 module.exports = Common;
