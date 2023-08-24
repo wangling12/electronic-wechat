@@ -190,7 +190,7 @@ class ChatHistorys {
     }
   }
 
-  getHistory(user) {
+  getHistory(user,type) {
     if (user === '2233') return;
     try {
       const scope = angular.element('#chatArea').scope();
@@ -223,6 +223,11 @@ class ChatHistorys {
         }
         chatsObj = this.AllChatHistorys[window._contacts[user].NickName]
       }
+	  if(type == 'get'){
+		  console.log('chatsObj')
+		  console.log(chatsObj)
+		  return chatsObj
+	  }
       let start = chatsObj.chats.length - chatsObj.get - 1
       let end = start - 4 >= 0 ? start - 4 : 0;
       let his = chatsObj.chats
@@ -291,8 +296,6 @@ class ChatHistorys {
     }
     catch (e) {
       loadHisStatus.innerHTML = "获取失败"
-      console.error(e)
-      console.error(user)
     }
     setTimeout(() => {
       this.lockscroll = true
