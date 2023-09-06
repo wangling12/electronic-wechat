@@ -25,7 +25,7 @@ else
     APP_NAME="Electronic WeChat"
 fi
 
-ignore_list="dist|scripts|\.idea|.*\.md|.*\.yml|node_modules/nodejieba|install"
+ignore_list="scripts|\.idea|.*\.md|.*\.yml|node_modules/nodejieba|install"
 
 electron-packager . "${APP_NAME}" --platform=$PLATFORM --arch=$ARCH --asar --icon=assets/icon.icns --overwrite --out=./dist --ignore=${ignore_list}
 
