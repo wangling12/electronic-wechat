@@ -5,6 +5,7 @@ name: Build
 
 # Workflow's trigger
 on:
+  workflow_dispatch:
   push:
     tags:
       - 'v*.*.*'
@@ -23,7 +24,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-18.04]
+        os: [ubuntu-20.04]
 
     # create steps
     steps:
@@ -38,17 +39,22 @@ jobs:
       # step3: npm install
       - name: npm install
         run: |
-          npm install -g electron-installer-debian
+          sudo apt update
+          sudo apt install -y curl wget sudo build-essential
+          sudo npm install -g n
+          sudo n lts
+          sudo npm install -g npm
+          sudo npm install -g electron-installer-debian
           npm install
       # step4: build app
       - name: build Ubuntu app
-        if: matrix.os == 'ubuntu-18.04'
+        if: matrix.os == 'ubuntu-20.04'
         run: |
           npm run build:linuxarm64
           npm run build:linux
       # step5: cleanup artifacts in dist_electron
       - name: cleanup artifacts for Ubuntu
-        if: matrix.os == 'ubuntu-18.04'
+        if: matrix.os == 'ubuntu-20.04'
         run: |
           mkdir artifacts
           ls
