@@ -93,7 +93,7 @@ class WeChatWindow {
       // this.wechatWindow.webContents.copyImageAt(pos.x, pos.y)
       this.wechatWindow.webContents.copyImageAt(350, 100)
     })
-    this.wechatWindow.webContents.openDevTools({ mode: 'right' })
+    // this.wechatWindow.webContents.openDevTools({ mode: 'right' })
     const remoteMain = require("@electron/remote/main");
     remoteMain.enable(this.wechatWindow.webContents);
     /* menu is always visible on xfce session */
